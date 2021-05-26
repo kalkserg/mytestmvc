@@ -14,9 +14,10 @@ public class HelloWorldController {
 //    }
 
     @PostMapping(value = "/")
-    public String postBody(@RequestBody String str, Model model) {
-        //System.out.println(str);
-        model.addAttribute("str", str);
+    public String postBody(@RequestBody(required = false) String str, Model model) {
+        System.out.println(str);
+        if (str!=null) model.addAttribute("str", str);
+        else model.addAttribute("str", "EMPTY");
         return "sample";
     }
 }
