@@ -40,11 +40,11 @@ public class HelloWorldController {
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
 
-//    @GetMapping()
-//    public String getBody(@RequestBody(required = false) String str, Model model) {
-//        //System.out.println(str);
-//        model.addAttribute("str", text);
-//        return "byby";
-//    }
+    @GetMapping()
+    public String getBody(@RequestBody(required = false) String str, Model model) {
+        //System.out.println(str);
+        model.addAttribute("str", text);
+        return "byby";
+    }
 
 }
