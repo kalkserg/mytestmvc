@@ -45,8 +45,8 @@ public class HelloWorldController {
     @GetMapping()
     public String getBody(@RequestBody(required = false) String str, Model model) {
         //System.out.println(str);
-        model.addAttribute("str", str);
-//        model.addAttribute("str", text);
+//        model.addAttribute("str", str);
+        model.addAttribute("str", text);
         return "byby";
     }
 
