@@ -24,12 +24,13 @@ public class HelloWorldController {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         //System.out.println(str);
 
+        String ref = request.getHeader("Referer");
         String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
                 .replacePath(null)
                 .build()
                 .toUriString();
 
-        str = str + baseUrl;
+        str = str + " " + baseUrl + " " + ref;
 //
 //        System.out.println(baseUrl);
 
