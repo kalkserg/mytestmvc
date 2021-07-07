@@ -23,7 +23,7 @@ public class HelloWorldController {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         //System.out.println(str);
 
-        String ref = request.getHeader("Referer");
+        String ref = request.getRequestURI();
         String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
                 .replacePath(null)
                 .build()
