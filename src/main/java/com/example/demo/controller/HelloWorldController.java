@@ -29,7 +29,7 @@ public class HelloWorldController {
                 .build()
                 .toUriString();
 
-/
+
 //        System.out.println(baseUrl);
 
         if (str!=null) { text = text + str + " " + baseUrl + " " + ref + "\n"; model.addAttribute("str", text);}
