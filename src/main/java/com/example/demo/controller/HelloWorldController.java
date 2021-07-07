@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,15 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 public class HelloWorldController {
 
     String text ="";
-//    @RequestMapping(value = "/greeting")
-//    public String helloWorldController(@RequestParam(name = "name", required = false, defaultValue = "World!") String name, Model model) {
-//        model.addAttribute("name", name);
-//        return "greeting";
-//    }
+    @RequestMapping(value = "/greeting")
+    public String helloWorldController(@RequestParam(name = "name", required = false, defaultValue = "World!") String name, Model model) {
+        model.addAttribute("name", name);
+        return "greeting";
+    }
 
-        @RequestMapping()
-//    @PostMapping()
-    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request, Model model) {
+//        @RequestMapping()
+    @PostMapping()
+    public ResponseEntity<String> postBody(@RequestBody(required = false)  String str, HttpServletRequest request, Model model) {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         //System.out.println(str);
 
@@ -34,8 +36,8 @@ public class HelloWorldController {
 
         if (str!=null) { text = text + str + " " + baseUrl + " " + ref + "\n"; model.addAttribute("str", text);}
         else model.addAttribute("str", "EMPTY");
-        return "sample";
-        //return new ResponseEntity<String>("Ok", HttpStatus.OK);
+        //return "sample";
+        return new ResponseEntity<String>("Ok", HttpStatus.OK);
     }
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
