@@ -20,18 +20,21 @@ public class HelloWorldController {
 
     //    @RequestMapping()
     @PostMapping()
-    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
-        System.out.println(str);
+    public String postBody(@RequestBody(required = false)  String str,HttpServletRequest request, Model model) {
+//    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
+        //System.out.println(str);
 
         String baseUrl = ServletUriComponentsBuilder.fromRequestUri(request)
                 .replacePath(null)
                 .build()
                 .toUriString();
 
-        System.out.println(baseUrl);
+        str = str + baseUrl;
+//
+//        System.out.println(baseUrl);
 
-        //if (str!=null) { text = text + str + "\n";model.addAttribute("str", text);}
-        //else model.addAttribute("str", "EMPTY");
+        if (str!=null) { text = text + str + "\n";model.addAttribute("str", text);}
+        else model.addAttribute("str", "EMPTY");
         return "sample";
         //return new ResponseEntity<String>("Ok", HttpStatus.OK);
     }
