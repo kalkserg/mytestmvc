@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 public class HelloWorldController {
 
     String text ="";
-    private String UrlResource;
 //    @RequestMapping(value = "/greeting")
 //    public String helloWorldController(@RequestParam(name = "name", required = false, defaultValue = "World!") String name, Model model) {
 //        model.addAttribute("name", name);
@@ -20,7 +19,7 @@ public class HelloWorldController {
 
     //    @RequestMapping()
     @PostMapping()
-    public String postBody(@RequestBody(required = false)  String str,HttpServletRequest request, Model model) {
+    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request, Model model) {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         //System.out.println(str);
 
@@ -30,11 +29,10 @@ public class HelloWorldController {
                 .build()
                 .toUriString();
 
-        str = str + " " + baseUrl + " " + ref;
-//
+/
 //        System.out.println(baseUrl);
 
-        if (str!=null) { text = text + str + "\n";model.addAttribute("str", text);}
+        if (str!=null) { text = text + str + " " + baseUrl + " " + ref + "\n"; model.addAttribute("str", text);}
         else model.addAttribute("str", "EMPTY");
         return "sample";
         //return new ResponseEntity<String>("Ok", HttpStatus.OK);
@@ -42,11 +40,11 @@ public class HelloWorldController {
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
 
-    @GetMapping()
-    public String getBody(@RequestBody(required = false) String str, Model model) {
-        //System.out.println(str);
-        model.addAttribute("str", text);
-        return "byby";
-    }
+//    @GetMapping()
+//    public String getBody(@RequestBody(required = false) String str, Model model) {
+//        //System.out.println(str);
+//        model.addAttribute("str", text);
+//        return "byby";
+//    }
 
 }
