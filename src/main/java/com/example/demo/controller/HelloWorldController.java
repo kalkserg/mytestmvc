@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +21,7 @@ public class HelloWorldController {
 
 //        @RequestMapping()
     @PostMapping()
-    public ResponseEntity postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         System.out.println("POST "+str);
 //        String text ="";
@@ -43,12 +40,12 @@ public class HelloWorldController {
             model.addAttribute("str", text);
 
         String tmp = "{\"device\" : \"1F2395A\",\"downlinkData\" : \"0101000000000000\"}";
-//        model.addAttribute("str", tmp);
-//        return "sample";
+        model.addAttribute("str", tmp);
+        return "sample";
 //        response.setContentType("application/json");
 //        response.setCharacterEncoding("UTF-8");
 //        response.getWriter().write(tmp);
-        return new ResponseEntity (tmp, HttpStatus.OK);
+//        return new ResponseEntity (tmp, HttpStatus.OK);
     }
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
