@@ -42,7 +42,8 @@ public class HelloWorldController {
 //        else
             model.addAttribute("str", text);
 
-        String tmp = "{\"device\" : \"1F2395A\",\"data\" : \"0101000000000000\"}";
+        //String tmp = "{\"device\" : \"1F2395A\",\"data\" : \"0101000000000000\"}";
+        String tmp = "{ \"1F2395A\": {\"downlinkData\" : \"0101000000000000\" }}";
 //        model.addAttribute("str", tmp);
         PrintWriter out = response.getWriter();
         response.setContentType("application/json");
