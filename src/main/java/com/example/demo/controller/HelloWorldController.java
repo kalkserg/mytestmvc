@@ -1,7 +1,5 @@
 package com.example.demo.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.StringReader;
+import java.io.PrintWriter;
 
 @Controller
 public class HelloWorldController {
@@ -24,7 +22,7 @@ public class HelloWorldController {
 
 //        @RequestMapping()
     @PostMapping()
-    public ResponseEntity<String> postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+    public void postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         System.out.println("POST "+str);
 //        String text ="";
@@ -42,21 +40,22 @@ public class HelloWorldController {
 //        else
             model.addAttribute("str", text);
 
-//        String tmp = "{\"device\" : \"1F2395A\",\"data\" : \"0101000000000000\"}";
-        String text = "{ \"1F2395A\": {\"downlinkData\" : \"0101000000000000\" }}";
+        String text = "{\"deviceId\" : \"1F2395A\",\"downlinkData\" : \"0101000000000000\"}";
+//        String text = "{ \"1F2395A\": {\"downlinkData\" : \"0101000000000000\" }}";
 //        model.addAttribute("str", tmp);
-//        PrintWriter out = response.getWriter();
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
-//        out.print(tmp);
-//        out.flush();
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        out.print(text);
+        out.flush();
 
 //        return "sample";
 //        response.setContentType("application/json");
 //        response.setCharacterEncoding("UTF-8");
 //        response.getWriter().write(tmp);
 
-        return new ResponseEntity<String>(text, HttpStatus.OK);
+//        return out;
+//        return new ResponseEntity( out, HttpStatus.OK);
     }
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
