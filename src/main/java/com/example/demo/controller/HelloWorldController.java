@@ -35,7 +35,7 @@ public class HelloWorldController {
 //                .build()
 //                .toUriString();
 
-            text = "POST " + str + " " + " " + ref + "\n";
+           // text = "POST " + str + " " + " " + ref + "\n";
 //        System.out.println(baseUrl);
 
 //        if (str!=null) { text = text + str + " " + baseUrl + " " + ref + "\n"; model.addAttribute("str", text);}
@@ -43,7 +43,7 @@ public class HelloWorldController {
             model.addAttribute("str", text);
 
 //        String tmp = "{\"device\" : \"1F2395A\",\"data\" : \"0101000000000000\"}";
-        String tmp = "{ \"1F2395A\": {\"downlinkData\" : \"0101000000000000\" }}";
+        String text = "{ \"1F2395A\": {\"downlinkData\" : \"0101000000000000\" }}";
 //        model.addAttribute("str", tmp);
 //        PrintWriter out = response.getWriter();
 //        response.setContentType("application/json");
@@ -55,16 +55,17 @@ public class HelloWorldController {
 //        response.setContentType("application/json");
 //        response.setCharacterEncoding("UTF-8");
 //        response.getWriter().write(tmp);
-        return new ResponseEntity<String>(tmp, HttpStatus.OK);
+
+        return new ResponseEntity<String>(text, HttpStatus.OK);
     }
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
 
     @GetMapping()
-    public String getBody(@RequestBody(required = false)  String str,Model model) {
+    public String getBody(@RequestBody(required = false)  String str, Model model) {
         System.out.println("GET "+text);
 //        model.addAttribute("str", str);
-        text = text + "GET " + str + "\n";
+//        text = text + "GET " + str + "\n";
         model.addAttribute("str", text);
         return "byby";
     }
