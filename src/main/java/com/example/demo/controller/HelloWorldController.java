@@ -24,7 +24,7 @@ public class HelloWorldController {
 
 //        @RequestMapping()
     @PostMapping()
-    public ResponseEntity<String> postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+    public ResponseEntity<String> postBody(@RequestBody(required = false)  String str, HttpServletRequest request, Model model) throws IOException {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         System.out.println("POST "+str);
 //        String text ="";
@@ -42,7 +42,7 @@ public class HelloWorldController {
 //        else
             model.addAttribute("str", text);
 
-        String tmp = "{\"deviceId\" : \"1F2395A\",\"data\" : \"0101000000000000\"}";
+        String tmp = "{\"device\" : \"1F2395A\",\"data\" : \"0101000000000000\"}";
 //        model.addAttribute("str", tmp);
 //        return "sample";
 //        response.setContentType("application/json");
@@ -55,7 +55,7 @@ public class HelloWorldController {
 
     @GetMapping()
     public String getBody(@RequestBody(required = false)  String str,Model model) {
-        System.out.println("GET "+str);
+        System.out.println("GET "+text);
 //        model.addAttribute("str", str);
         text = text + "GET " + str + "\n";
         model.addAttribute("str", text);
