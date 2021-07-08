@@ -24,7 +24,7 @@ public class HelloWorldController {
 
 //        @RequestMapping()
     @PostMapping()
-    public ResponseEntity postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+    public void postBody(@RequestBody(required = false)  String str, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
 //    public String postBody(@RequestBody(required = false)  String str, HttpServletRequest request) {
         System.out.println("POST "+str);
 //        String text ="";
