@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @Controller
 public class HelloWorldController {
@@ -62,10 +61,10 @@ public class HelloWorldController {
 //        return out;
         JSONObject resp = new JSONObject();
         resp.put("device", "1F2395A");
-        resp.put("data", "0101000000000001");
+        resp.put("data", "010С000000000000");
 
-//        return new ResponseEntity<String>(resp.toString(), HttpStatus.CREATED);
-        return new ResponseEntity<String>( messageOut, HttpStatus.OK);
+        return new ResponseEntity<String>(resp.toString(), HttpStatus.CREATED);
+//        return new ResponseEntity<String>( messageOut, HttpStatus.OK);
     }
 
     //{"device" : "{device}","time" : "{time}","data" : "{data}","seqNumber" : "{seqNumber}","lqi" : "{lqi}","operatorName" : "{operatorName}"}
