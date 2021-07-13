@@ -45,7 +45,7 @@ public class HelloWorldController {
 //            model.addAttribute("str", text);
         messageIn = messageIn + str;
 //        messageOut = "{\"device\" : \"1F2395A\",\"data\" : \"0101000000000001\"}";
-        messageOut = "{ \"1F2395A\": {\"downlinkData\" : \"0101000000000000\" }}";
+        messageOut = "{ \"1F2395A\": {\"downlinkData\" : \"010C000000000000\" }}";
 //        model.addAttribute("str", tmp);
 //        PrintWriter out = response.getWriter();
 //        response.setContentType("application/json");
@@ -61,7 +61,7 @@ public class HelloWorldController {
 //        return out;
         JSONObject resp = new JSONObject();
         resp.put("device", "1F2395A");
-        resp.put("data", "0101000000000000");
+        resp.put("data", "010C000000000000");
 
 //        return new ResponseEntity<String>(resp.toString(), HttpStatus.CREATED);
         return new ResponseEntity<String>( messageOut, HttpStatus.OK);
